@@ -1,7 +1,10 @@
 # Dice-rolling, a framework to parse dice roll expressions from RPG & board games
 
 ## Objectives
-The main goal is to produce a Node.js module bringing the same dice parsing capabilities as in the MapTool application (see here [the dice expressions supported in MapTool](https://wiki.rptools.info/index.php/Dice_Expressions)).  
+The main goal is to produce a Node.js module bringing the dice parsing capabilities present in the various VTT apps:  
+- [Dice expressions supported in MapTool](https://wiki.rptools.info/index.php/Dice_Expressions)
+- [Dice expressions supported in Foundry VTT](https://foundryvtt.com/article/dice/)
+
 Game-specific expressions will be implemented later, if required.  
 
 ## Implementation

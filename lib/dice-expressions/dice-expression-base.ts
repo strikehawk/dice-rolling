@@ -1,17 +1,7 @@
-import { DiceExpression } from "./roll-part";
+import { DiceExpression, DiceExpressionResult } from "./types";
 
 export abstract class DiceExpressionBase implements DiceExpression {
     public readonly expression: string;
-
-    protected _value: number = 0;
-    public get value(): number {
-        return this._value;
-    }
-
-    protected _dice: number[];
-    public get dice(): number[] {
-        return this._dice;
-    }
 
     constructor(expression: string) {
         if (!expression) {
@@ -22,12 +12,7 @@ export abstract class DiceExpressionBase implements DiceExpression {
         this._parse(expression);
     }
     
-    public abstract roll(): void;
-
-    public reset(): void {
-        this._value = 0;
-        this._dice = [];
-    }
+    public abstract roll(): DiceExpressionResult;
     
     protected abstract _parse(expression: string): void;
 

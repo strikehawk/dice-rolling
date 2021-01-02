@@ -13,8 +13,7 @@
     "build:browser-watch": "tsc -p tsconfig.json --watch",
     "build:node-watch": "tsc -p tsconfig-node.json --watch",
     "build-watch": "npm-run-all --parallel build:browser-watch build:node-watch",
-    "build-webpack": "webpack",
-    "prepublish": "npm run build"
+    "prepare": "npm run build"
   },
   "keywords": [
     "dice",
@@ -25,9 +24,6 @@
   "license": "MIT",
   "devDependencies": {
     "npm-run-all": "^4.1.5",
-    "ts-loader": "^8.0.13",
-    "typescript": "^4.1.3",
-    "webpack": "^5.11.1",
-    "webpack-cli": "^4.3.1"
+    "typescript": "^4.1.3"
   }
 }

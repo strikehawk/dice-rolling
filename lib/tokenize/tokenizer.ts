@@ -1,6 +1,6 @@
 import { flattenDeep, compact } from "lodash";
 
-import { Rule, rules } from "./rules";
+import { TokenRule, rules } from "./rules";
 import { buildToken, isToken, Target, Token } from "./token";
 
 export class Tokenizer {
@@ -27,7 +27,7 @@ export class Tokenizer {
         return result;
     }
 
-    private static _applyRuleOnTargets(targets: Target[], rule: Rule): Target[] {
+    private static _applyRuleOnTargets(targets: Target[], rule: TokenRule): Target[] {
         let output: any[];
 
         // run every rule on target
@@ -42,7 +42,7 @@ export class Tokenizer {
         return output;
     }
 
-    private static _applyRuleOnTarget(target: Target, rule: Rule): Target[] {
+    private static _applyRuleOnTarget(target: Target, rule: TokenRule): Target[] {
         // no need to do anything if it's not a string
         if (isToken(target)) {
             return [target];
@@ -77,5 +77,3 @@ export class Tokenizer {
         return output;
     }
 }
-
-export const tokenize: (expression: string) => Target[] = Tokenizer.tokenize;

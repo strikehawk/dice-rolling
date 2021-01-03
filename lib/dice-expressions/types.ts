@@ -18,6 +18,11 @@ export interface DieResult {
 
 export interface DiceExpressionResult {
     /**
+     * The expression that produced the result.
+     */
+    expression: string;
+
+    /**
      * number of
      */
     diceSides: number;
@@ -38,9 +43,7 @@ export interface DiceExpression {
 }
 
 export interface DiceExpressionClass {
-    readonly CAPTURE_GROUP: string;
     readonly REGEX_PATTERN: string;
-    readonly CAPTURE_PATTERN: string;
 
     new (...args: any[]): DiceExpression;
 

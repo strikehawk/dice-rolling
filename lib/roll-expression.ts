@@ -1,7 +1,7 @@
 import { Evaluator, RollExpressionResult } from "./parse/evaluator";
 import { ASTNode } from "./parse/node";
 import { Parser } from "./parse/parser";
-import { Tokenizer } from "./tokenize";
+import { Tokenizer } from "./tokenize/tokenizer";
 
 export class RollExpression {
     private _ast: ASTNode;

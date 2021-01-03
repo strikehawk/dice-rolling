@@ -1,4 +1,5 @@
-import { getDiceExpression } from "../dice-expressions/roll-registry";
+import { compact } from "lodash";
+import { getDiceExpression } from "../dice-expressions/registry";
 import { DiceExpressionResult } from "../dice-expressions/types";
 import { isConstant, isDiceExpression } from "../tokenize/token";
 import { ASTNode, ASTOperandNode } from "./node";
@@ -12,7 +13,7 @@ export interface RollExpressionResult {
     /**
      * Details on every DiceExpression present in the RollExpression. The keys of the object correspond to the index of the token having produced the DiceExpressionResult.
      */
-    explanations: { [key: number]: DiceExpressionResult }
+    explanations: DiceExpressionResult[];
 }
 
 export class Evaluator {
@@ -80,6 +81,9 @@ export class Evaluator {
 
         const total = Evaluator._evaluateNode(node, result);
         result.total = total;
+
+        // compact the explanations
+        result.explanations = compact(result.explanations);
 
         return result;
     }

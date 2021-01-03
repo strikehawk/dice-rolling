@@ -1,13 +1,8 @@
 import { DiceExpressionBase } from "./dice-expression-base";
 import { DiceExpressionResult, DieResult, DieUse } from "./types";
 
-const CAPTURE_GROUP: string = "XdY";
-
 export class XdY extends DiceExpressionBase {
-    public static readonly CAPTURE_GROUP: string = CAPTURE_GROUP;
     public static readonly REGEX_PATTERN: string = "\\d*d\\d+";
-    public static readonly CAPTURE_PATTERN: string = `(?<${XdY.CAPTURE_GROUP}>${XdY.REGEX_PATTERN})`;
-
     public static match(expression: string): boolean {
         return XdY._validateRegexp.test(expression);
     }
@@ -22,8 +17,8 @@ export class XdY extends DiceExpressionBase {
     private _x: number;
     private _y: number;
 
-    constructor(token: string) {
-        super(token);
+    constructor(expression: string) {
+        super(expression);
     }
 
     public roll(): DiceExpressionResult {
@@ -39,6 +34,7 @@ export class XdY extends DiceExpressionBase {
         const total = dice.reduce((accumulator, current) => accumulator + current.value, 0);
 
         return {
+            expression: this.expression,
             diceSides: this._y,
             total: total,
             dice: dice

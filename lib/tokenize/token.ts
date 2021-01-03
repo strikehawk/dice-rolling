@@ -1,7 +1,7 @@
-import { RuleData } from "./rules";
+import { TokenRuleData } from "./rules";
 import { TokenTypes } from "./token-types";
 
-export interface Token extends RuleData {
+export interface Token extends TokenRuleData {
     value: string;
 
     /**
@@ -24,7 +24,7 @@ export function isToken(target: any): boolean {
     return false;
 }
 
-export function buildToken(target: string, data: RuleData): Token {
+export function buildToken(target: string, data: TokenRuleData): Token {
     return {
         value: target,
         index: 0,

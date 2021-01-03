@@ -1,25 +1,25 @@
-import { diceExpressionClasses } from "../dice-expressions/roll-registry";
+import { diceExpressionClasses } from "../dice-expressions/registry";
 import { TokenTypes } from "./token-types";
 
-export interface RuleData {
+export interface TokenRuleData {
     type: TokenTypes;
     args?: number;
     precedence?: number;
     isLeftAssociative?: boolean;
 }
 
-export interface RuleDefinition {
+export interface TokenRuleDefinition {
     key: string;
-    data: RuleData;
+    data: TokenRuleData;
 }
 
-export interface Rule {
+export interface TokenRule {
     key: RegExp;
-    data: RuleData;
+    data: TokenRuleData;
 }
 
 export interface TokenizationConfig {
-    rules: RuleDefinition[];
+    rules: TokenRuleDefinition[];
 }
 
 const DICE_EXPRESSIONS = diceExpressionClasses.map(o => o.REGEX_PATTERN).join("|");
@@ -80,4 +80,4 @@ export const config: TokenizationConfig = {
     ]
 };
 
-export const rules: Rule[] = config.rules.map(o => ({ key: new RegExp(o.key, "g"), data: o.data }));
+export const rules: TokenRule[] = config.rules.map(o => ({ key: new RegExp(o.key, "g"), data: o.data }));
